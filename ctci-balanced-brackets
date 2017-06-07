@@ -1,0 +1,74 @@
+/*
+Given  strings of brackets, determine whether each sequence of brackets is balanced. If a string is balanced, print YES on a new line; otherwise, print NO on a new line.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    
+    public static boolean isBalanced1(String expression){
+        char[] charArr = expression.toCharArray();
+        for(int i=0; i<charArr.length; i++){
+            if(charArr[i] == '-'){
+                return true;
+            }
+            if(charArr[i] == '}' || charArr[i] == ']' || charArr[i] == ')'){
+                if(i == 0){
+                    return false;
+                }
+                if((charArr[i] == '}' && charArr[i-1] == '{') || (charArr[i] == ']' && charArr[i-1] == '[') || (charArr[i] == ')' && charArr[i-1] == '(')){
+                    int j = i-1;
+                    for(int k=i+1; k<charArr.length; j++, k++){
+                        charArr[j] = charArr[k];
+                    }
+                    for(; j<charArr.length; j++){
+                        charArr[j] = '-';
+                    }
+                    i-=2;
+            }
+                else{
+                    return false;
+                }
+        }
+    }
+        return true;
+    }
+    public static boolean isBalanced(String expression) {
+        char[] charArr = expression.toCharArray();
+        for(int i=0; i<charArr.length; i++){
+            if(charArr[i] == '}' || charArr[i] == ']' || charArr[i] == ')'){
+                int j = i-1;
+                if(j == -1){
+                    return false;
+                }
+                while(charArr[j] == '-'){
+                    j--;
+                    if(j == -1){
+                        return false;
+                    }
+                }
+                if((charArr[i] == '}' && charArr[j] == '{') || (charArr[i] == ']' && charArr[j] == '[') || (charArr[i] == ')' && charArr[j] == '(')){
+                    charArr[i] = '-';
+                    charArr[j] = '-';
+                }
+                else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+  
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for (int a0 = 0; a0 < t; a0++) {
+            String expression = in.next();
+            System.out.println( (isBalanced(expression)) ? "YES" : "NO" );
+        }
+    }
+}
+
