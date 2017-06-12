@@ -1,0 +1,33 @@
+/*
+Given a base- integer, , convert it to binary (base-). Then find and print the base- integer denoting the maximum number of consecutive 's in 's binary representation.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int max = 0;
+        int prev = 0;
+        while(n>0){
+            int bin = n%2;
+            n = n/2;
+            if(bin == 1){
+                prev++;
+                if(prev > max){
+                    max = prev;
+                }
+            }
+            else{
+                prev = 0;
+            }
+        }
+        System.out.println(max);
+    }
+}
+
