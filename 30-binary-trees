@@ -1,0 +1,21 @@
+/*
+A level-order traversal, also known as a breadth-first search, visits each level of a tree's nodes from left to right, top to bottom. You are given a pointer, , pointing to the root of a binary search tree. Complete the levelOrder function provided in your editor so that it prints the level-order traversal of the binary search tree.
+*/
+static void levelOrder(Node root){
+      //Write your code here
+    List<Node> arr = new ArrayList<Node>();
+    Node node = root;
+    arr.add(node);
+    int i=0;
+    while(node != null){
+        System.out.print(arr.get(i).data+" ");
+        if(node.left != null){
+            arr.add(node.left);
+        }
+        if(node.right != null){
+            arr.add(node.right);
+        }
+        i++;
+        node = arr.get(i);
+    }
+}
