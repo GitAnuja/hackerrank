@@ -1,0 +1,39 @@
+/*
+Vincent and Catherine are classmates who just took an exam in Math 55. The exam consists of  multiple-choice questions. Each question has  choices, each of which is represented by a single capital letter A, B, C, D and E. Each question has exactly one correct answer. A student's score is equal to the number of questions he/she correctly answered.
+
+This was the hardest exam they've ever taken! No one was ever sure of their answer even after the exam, and some students weren't even able to answer all the questions. The questions were so hard that Vincent and Catherine strongly believe that they can't both be correct in any question. In other words, for each question, they believe that one or both of them must be incorrect.
+
+Now, Vincent wants to know how well he could have performed in the exam. Given the answers of Vincent and Catherine, find the maximum score that Vincent could have gotten, assuming that they can't both have gotten the correct answer to any particular question.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int maxScoreOfVincent(int n, String s, String t) {
+        // Complete this function
+        int score = 0;
+        for(int i=0; i<n; i++){
+            char sc = s.charAt(i);
+            char tc = t.charAt(i);
+            if(sc != '.' && sc != tc){
+                score++;
+            }
+        }
+        return score;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //  Return the maximum score of Vincent.
+        int n = in.nextInt();
+        String s = in.next();
+        String t = in.next();
+        int result = maxScoreOfVincent(n, s, t);
+        System.out.println(result);
+    }
+}
+
