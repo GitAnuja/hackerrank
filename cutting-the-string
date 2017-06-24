@@ -1,0 +1,50 @@
+/*
+Find the number of successful ways of cutting and inserting a substring, i.e., the number of ways you can cut a substring and insert it back without changing the string.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static long countCutsAndInserts(String s) {
+        // Complete this function
+        long count = 0;
+        for(int i=1; i<=s.length(); i++){
+            count += countCutsAndInserts(s, i);
+        }
+        return count;
+    }
+    
+    static long countCutsAndInserts(String s, int n){
+        long count = 0;
+        for(int i=0; i<s.length()-n+1; i++){
+            String sub = s.substring(i, i+n);
+            String rem = s.substring(0, i).concat(s.substring(i+n));
+            count+=countCutsAndInserts(s, sub, rem);
+        }
+        return count;
+    }
+    
+    static long countCutsAndInserts(String s, String sub, String rem){
+        long count = 0;
+        for(int i=0; i<=rem.length(); i++){
+            String newStr = rem.substring(0, i).concat(sub).concat(rem.substring(i));
+            if(newStr.equals(s)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        //  Return the number of successful ways to cut and insert a substring.
+        String s = in.next();
+        long result = countCutsAndInserts(s);
+        System.out.println(result);
+    }
+}
+
