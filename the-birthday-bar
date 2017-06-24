@@ -1,0 +1,40 @@
+/*
+Lily has a chocolate bar consisting of a row of  squares where each square has an integer written on it. She wants to share it with Ron for his birthday, which falls on month  and day . Lily wants to give Ron a piece of chocolate only if it contains  consecutive squares whose integers sum to .
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int solve(int n, int[] s, int d, int m){
+        // Complete this function
+        int res = 0;
+        for(int i=0; i<n; i++){
+            int sum = s[i];
+            for(int j=i+1, k=1; j<n && k<m ;j++, k++){
+                sum+=s[j];
+            }
+            if(sum == d){
+                res++;
+            }
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] s = new int[n];
+        for(int s_i=0; s_i < n; s_i++){
+            s[s_i] = in.nextInt();
+        }
+        int d = in.nextInt();
+        int m = in.nextInt();
+        int result = solve(n, s, d, m);
+        System.out.println(result);
+    }
+}
+
