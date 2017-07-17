@@ -1,0 +1,42 @@
+/*
+Lily likes to play games with integers and their reversals. For some integer , we define  to be the reversal of all digits in . For example, , , and .
+
+Logan wants to go to the movies with Lily on some day  satisfying , but he knows she only goes to the movies on days she considers to be beautiful. Lily considers a day to be beautiful if the absolute value of the difference between  and  is evenly divisible by .
+
+Given , , and , count and print the number of beautiful days when Logan and Lily can go to the movies.
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    static int reverse(int n){
+        int reversenum =0;
+      while( n != 0 )
+      {
+          reversenum = reversenum * 10;
+          reversenum = reversenum + n%10;
+          n = n/10;
+      }
+        return reversenum;
+
+    }
+    
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        String[] line = sc.nextLine().split(" ");
+        int i = Integer.parseInt(line[0]);
+        int j = Integer.parseInt(line[1]);
+        int k = Integer.parseInt(line[2]);
+        int count = 0;
+        for(int l=i; l<=j; l++){
+            int n = reverse(l);
+            int diff = Math.abs(n-l);
+            if(diff%k == 0){
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
