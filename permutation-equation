@@ -1,0 +1,37 @@
+/*
+You are given a sequence of  integers, . Each element in the sequence is distinct and satisfies . For each  where , find any integer  such that  and print the value of  on a new line.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        String[] line = sc.nextLine().split(" ");
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = Integer.parseInt(line[i]);
+        }
+        for(int x=1; x<=n; x++){
+            int y = 0;
+            for(int i=0; i<n; i++){
+                if(arr[i] == x){
+                    y = i+1;
+                    break;
+                }
+            }
+            for(int i=0; i<n; i++){
+                if(arr[i] == y){
+                    System.out.println(i+1);
+                    break;
+                }
+            }
+        }
+    }
+}
+
