@@ -1,0 +1,31 @@
+/*
+Watson gives two integers ( and ) to Sherlock and asks if he can count the number of square integers between  and  (both inclusive).
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine());
+        for(int i=0; i<t; i++){
+            String[] line = sc.nextLine().split(" ");
+            int x = Integer.parseInt(line[0]);
+            int y = Integer.parseInt(line[1]);
+            int count = 0;
+            for(int j=1; j<y; j++){
+                int sq = j*j;
+                if(sq < x){
+                    continue;
+                }
+                else if(sq > y){
+                    break;
+                }
+                count++;
+            }
+            System.out.println(count);
+        }
+    }
+}
