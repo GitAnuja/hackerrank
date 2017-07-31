@@ -1,0 +1,54 @@
+/*
+You are given  sticks, where the length of each stick is a positive integer. A cut operation is performed on the sticks such that all of them are reduced by the length of the smallest stick.
+
+Suppose we have six sticks of the following lengths:
+
+5 4 4 2 2 8
+Then, in one cut operation we make a cut of length 2 from each of the six sticks. For the next cut operation four sticks are left (of non-zero length), whose lengths are the following: 
+
+3 2 2 6
+The above step is repeated until no sticks are left.
+
+Given the length of  sticks, print the number of sticks that are left before each subsequent cut operations.
+
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        String[] line = sc.nextLine().split(" ");
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = Integer.parseInt(line[i]);
+        }
+        System.out.println(n);
+        while(arr.length > 0){
+            int m = n;
+            Arrays.sort(arr);
+            int min = arr[0];
+            for(int i=0; i<n; i++){
+                arr[i] = arr[i]-min;
+                if(arr[i] <= 0){
+                    m--;
+                }
+            }
+            if(m == 0){
+                break;
+            }
+            System.out.println(m);
+            int[] marr = arr;
+            arr = new int[m];
+            for(int i=0, j=0; i<n; i++){
+                if(marr[i] > 0){
+                    arr[j++] = marr[i];
+                }
+            }
+            n = m;
+       }
+    }
+}
