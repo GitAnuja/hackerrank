@@ -1,0 +1,39 @@
+/*
+Emma is playing a new mobile game involving  clouds numbered from  to . A player initially starts out on cloud , and they must jump to cloud . In each step, she can jump from any cloud  to cloud  or cloud .
+
+There are two types of clouds, ordinary clouds and thunderclouds. The game ends if Emma jumps onto a thundercloud, but if she reaches the last cloud (i.e., ), she wins the game!
+
+jump(1).png
+
+Can you find the minimum number of jumps Emma must make to win the game? It is guaranteed that clouds  and  are ordinary-clouds and it is always possible to win the game.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int c[] = new int[n];
+        for(int c_i=0; c_i < n; c_i++){
+            c[c_i] = in.nextInt();
+        }
+        int count = 0;
+        for(int i=0; i<n-1; i++, count++){
+            if((i+2) < n && c[i+2] == 0){
+                i++;
+            }
+            else{
+                if(c[i+1] == 1){
+                    i++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+}
+
