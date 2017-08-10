@@ -1,0 +1,30 @@
+/*
+Karl has an array of  integers defined as . In one operation, he can delete any element from the array.
+
+Karl wants all the elements of the array to be equal to one another. To do this, he must delete zero or more elements from the array. Find and print the minimum number of deletion operations Karl must perform so that all the array's elements are equal.
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        String[] line = sc.nextLine().split(" ");
+        int maxCount = 0;
+        for(int i=0; i<n; i++){
+            int count = 1;
+            for(int j=i+1; j<n; j++){
+                if(Integer.parseInt(line[i]) == Integer.parseInt(line[j])){
+                    count++;
+                }
+            }
+            if(count > maxCount){
+                maxCount = count;
+            }
+        }
+        System.out.println(n-maxCount);
+    }
+}
