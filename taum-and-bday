@@ -1,0 +1,53 @@
+/*
+Taum is planning to celebrate the birthday of his friend, Diksha. There are two types of gifts that Diksha wants from Taum: one is black and the other is white. To make her happy, Taum has to buy  number of black gifts and  number of white gifts.
+
+The cost of each black gift is  units.
+The cost of every white gift is  units.
+The cost of converting each black gift into white gift or vice versa is  units.
+Help Taum by deducing the minimum amount he needs to spend on Diksha's gifts.
+*/
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            long b = in.nextLong();
+            long w = in.nextLong();
+            long x = in.nextLong();
+            long y = in.nextLong();
+            long z = in.nextLong();
+            if(x == y){
+                System.out.println(b*x+w*y);
+            }
+            else{
+                long res1 = b*x+w*y;
+                long res2 = b*x+w*(x+z);
+                long res3 = b*(y+z)+w*y;
+                if(res1 < res2){
+                    if(res1 < res3){
+                        System.out.println(res1);
+                    }
+                    else{
+                        System.out.println(res3);
+                    }
+                }
+                else{
+                    if(res2 < res3){
+                        System.out.println(res2);
+                    }
+                    else{
+                        System.out.println(res3);
+                    }
+                }
+            }
+        }
+    }
+}
+
