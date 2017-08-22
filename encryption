@@ -1,0 +1,63 @@
+/*
+An English text needs to be encrypted using the following encryption scheme. 
+First, the spaces are removed from the text. Let  be the length of this text. 
+Then, characters are written into a grid, whose rows and columns have the following constraints:
+
+, where  is floor function and  is ceil function
+For example, the sentence if man was meant to stay on the ground god would have given us roots after removing spaces is  characters long, so it is written in the form of a grid with 7 rows and 8 columns.
+
+ifmanwas  
+meanttos          
+tayonthe  
+groundgo  
+dwouldha  
+vegivenu  
+sroots
+Ensure that 
+If multiple grids satisfy the above conditions, choose the one with the minimum area, i.e. .
+The encoded message is obtained by displaying the characters in a column, inserting a space, and then displaying the next column and inserting a space, and so on. For example, the encoded message for the above rectangle is:
+
+imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
+
+You will be given a message in English with no spaces between the words. The maximum message length can be  characters. Print the encoded message.
+*
+/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        String in = sc.nextLine();
+        int L = in.length();
+        int r = 1, c= L;
+        for(int i=2; i<L; i++){
+            if(L%i == 0){
+                if(L/i < i){
+                    break;
+                }
+                r = i;
+                c = L/i;
+                break;
+            }
+        }
+        String[][] arr = new String[r][c];
+        int k =0;
+        for(int i=0; i<r; i++){
+            for(int j=0; j<c; j++){
+                arr[i][j] = String.valueOf(in.charAt(k));
+                System.out.print(arr[i][j]);
+                k++;
+            }
+            System.out.println();
+        }
+        for(int i=0; i<c; i++){
+            for(int j=0; j<r; j++){
+                System.out.print(arr[j][i]);
+            }
+            System.out.print(" ");
+        }
+    }
+}
