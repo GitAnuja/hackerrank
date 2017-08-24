@@ -24,40 +24,27 @@ You will be given a message in English with no spaces between the words. The max
 /
 import java.io.*;
 import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
 public class Solution {
 
     public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner sc = new Scanner(System.in);
-        String in = sc.nextLine();
-        int L = in.length();
-        int r = 1, c= L;
-        for(int i=2; i<L; i++){
-            if(L%i == 0){
-                if(L/i < i){
-                    break;
-                }
-                r = i;
-                c = L/i;
-                break;
-            }
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        int l = s.length();
+        int x = (int)Math.floor(Math.sqrt(l));
+        int y = (int)Math.ceil(Math.sqrt(l));
+        while(x*y < l){
+            x++;
         }
-        String[][] arr = new String[r][c];
-        int k =0;
-        for(int i=0; i<r; i++){
-            for(int j=0; j<c; j++){
-                arr[i][j] = String.valueOf(in.charAt(k));
-                System.out.print(arr[i][j]);
-                k++;
-            }
-            System.out.println();
-        }
-        for(int i=0; i<c; i++){
-            for(int j=0; j<r; j++){
-                System.out.print(arr[j][i]);
+        for(int i=0; i<y; i++){
+            for(int j=i; j<l; j+=y){
+                System.out.print(s.charAt(j));
             }
             System.out.print(" ");
         }
     }
 }
+
