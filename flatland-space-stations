@@ -1,0 +1,38 @@
+/*
+Flatland is a country with  cities,  of which have space stations. Each city, , is numbered with a distinct index from  to , and each city  is connected to city  by a bidirectional road that is  in length.
+
+For example, if  and cities  and  have space stations, then Flatland looks like this:
+
+hreasy(5).png
+
+For each city, determine its distance to the nearest space station and print the maximum of these distances.
+
+*/
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        String[] line = sc.nextLine().split(" ");
+        int n = Integer.parseInt(line[0]);
+        int c = Integer.parseInt(line[1]);
+        line = sc.nextLine().split(" ");
+        int max = 0;
+        for(int i=0 ;i<n; i++){
+            int min = n;
+            for(int j=0; j<c; j++){
+                int diff = Math.abs(Integer.parseInt(line[j]) - i);
+                if(diff < min){
+                    min = diff;
+                }
+            }
+            if(min > max){
+                max = min;
+            }
+        }
+        System.out.println(max);
+    }
+}
