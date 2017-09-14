@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int h = Integer.parseInt(sc.nextLine());
+        int m = Integer.parseInt(sc.nextLine());
+        String[] numbers = {"zero", "one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","quarter", "sixteen","seventeen","eighteen","nineteen","twenty","twenty one","twenty two","twenty three","twenty four","twenty five", "twenty six","twenty seven","twenty eight","twenty nine","half"};
+        if(m == 0){
+            System.out.print(numbers[h]+" o' clock");
+        }
+        else{
+            String fromTo = "past";
+            if(m > 30){
+                m = 60-m;
+                fromTo = "to";
+                h++;
+                if(h == 13){
+                    h = 1;
+                }
+            }
+            String minute = (m == 1)?" minute":((m == 15) || (m == 30))?"":" minutes";
+            System.out.print(numbers[m]+minute+" "+fromTo+" "+numbers[h]);
+        }
+    }
+}
