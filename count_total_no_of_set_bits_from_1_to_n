@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    while(sc.hasNext()){
+	        int n = Integer.parseInt(sc.nextLine());
+	        int count = 0;
+	        for(int i=1; i<=n; i++){
+	            count+=getBits(i);
+	        }
+	        System.out.println(count);
+	    }
+	}
+	
+	public static int getBits(int n){
+	    int bit = 0;
+	    while(n > 0){
+	        int r = n%2;
+	        n = n/2;
+	        if(r == 1){
+	            bit++;
+	        }
+	    }
+	    return bit;
+	}
+}
