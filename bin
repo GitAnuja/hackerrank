@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    Scanner sc = new Scanner(System.in);
+	    while(sc.hasNext()){
+	        String str = sc.nextLine();
+	        String[] line = sc.nextLine().split(" ");
+	        int n = Integer.parseInt(line[0]);
+	        int k = Integer.parseInt(line[1]);
+	        for(int i=0; i<n; i++){
+	            String newStr = "";
+	            for(int j=0; j<str.length() && newStr.length()<k; j++){
+	                if(str.charAt(j) == '0'){
+	                    newStr = newStr+"01";
+	                }
+	                else{
+	                    newStr+="10";
+	                }
+	            }
+	            str = newStr;
+	        }
+	        System.out.println(str.charAt(k-1));
+	    }
+	}
+}
