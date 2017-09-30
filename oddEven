@@ -1,0 +1,50 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    int n = Integer.parseInt(sc.nextLine());
+		    String[] line = sc.nextLine().split(" ");
+		    int[] no = new int[n];
+		    for(int j=0; j<n; j++){
+		        no[j] = Integer.parseInt(line[j]);
+		    }
+		    for(int j=0; j<n; j++){
+		        if(j%2 == 0){
+		            if(no[j]%2 != 0){
+		                int index = findNext(no, n, j+1, 0);
+		                swap(no, index, j);
+		            }
+		        }
+		        else{
+		            if(no[j]%2 == 0){
+		                int index = findNext(no, n, j+1, 1);
+		                swap(no, index, j);
+		            }
+		        }
+		        System.out.print(no[j]+" ");
+		    }
+		    System.out.println();
+		}
+	}
+	
+	public static int findNext(int[] no, int n, int i, int oe){
+	    for(int j=i; j<n; j+=2){
+	        if(no[j]%2 == oe){
+	            return j;
+	        }
+	    }
+	    return -1;
+	}
+	
+	public static void swap(int[] no, int i, int j){
+	    int t = no[i];
+	    no[i] = no[j];
+	    no[j] = t;
+	}
+}
