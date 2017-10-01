@@ -1,0 +1,21 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    int n = Integer.parseInt(sc.nextLine());
+		    String[] line = sc.nextLine().split(" ");
+		    for(int j=0; j<n-1; j++){
+		        if(Integer.parseInt(line[j]) > Integer.parseInt(line[j+1])){
+		            System.out.println(line[j]);
+		            break;
+		        }
+		    }
+		}
+	}
+}
