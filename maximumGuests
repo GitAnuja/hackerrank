@@ -1,0 +1,67 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    int n = Integer.parseInt(sc.nextLine());
+		    String[] entry = sc.nextLine().split(" ");
+		    String[] exit = sc.nextLine().split(" ");
+		    HashMap<Integer, Integer>arr = new HashMap<Integer, Integer>();
+		    int max = 0, time = 0;
+		    for(int j=0; j<n; j++){
+		        int start = Integer.parseInt(entry[j]);
+		        int end = Integer.parseInt(exit[j]);
+		        for(int k=start; k<=end; k++){
+		            int val = 1;
+		            if(arr.containsKey(k)){
+		                val = arr.get(k)+1;
+		            }
+		            arr.put(k, val);
+		            if(val > max){
+		                max = val;
+		                time = k;
+		            }
+		        }
+		    }
+		    System.out.println(max+" "+time);
+		}
+	}
+}import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    int n = Integer.parseInt(sc.nextLine());
+		    String[] entry = sc.nextLine().split(" ");
+		    String[] exit = sc.nextLine().split(" ");
+		    HashMap<Integer, Integer>arr = new HashMap<Integer, Integer>();
+		    int max = 0, time = 0;
+		    for(int j=0; j<n; j++){
+		        int start = Integer.parseInt(entry[j]);
+		        int end = Integer.parseInt(exit[j]);
+		        for(int k=start; k<=end; k++){
+		            int val = 1;
+		            if(arr.containsKey(k)){
+		                val = arr.get(k)+1;
+		            }
+		            arr.put(k, val);
+		            if(val > max){
+		                max = val;
+		                time = k;
+		            }
+		        }
+		    }
+		    System.out.println(max+" "+time);
+		}
+	}
+}
