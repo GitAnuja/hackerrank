@@ -1,0 +1,33 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    String line = sc.nextLine();
+		    char lastDigit = line.charAt(line.length()-1);
+		    int max = -1;
+		    for(int j=0; j<line.length()-1; j++){
+		        char digit = line.charAt(j);
+		        int d = Integer.parseInt(String.valueOf(digit));
+		        if(d%2 == 0){
+		            char[] temp = line.toCharArray();
+		            temp[j] = lastDigit;
+		            temp[line.length()-1] = digit;
+		            int t1 = Integer.parseInt(String.valueOf(temp));
+		            if(t1 > max){
+		                max = t1;
+		            }
+		        }
+		    }
+		    if(max == -1){
+		        max = Integer.parseInt(line);
+		    }
+		    System.out.println(max);
+		}
+	}
+}
