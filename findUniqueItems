@@ -1,0 +1,32 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    String[] line = sc.nextLine().split(" ");
+		    int n = Integer.parseInt(line[0]);
+		    int k = Integer.parseInt(line[1]);
+		    line = sc.nextLine().split(" ");
+		    int[] arr = new int[n];
+		    for(int j=0; j<n; j++){
+		        arr[j] = Integer.parseInt(line[j]);
+		    }
+		    Arrays.sort(arr);
+		    for(int j=0; j<n; j+=k){
+		        if((j+k-1) >= n){
+		            System.out.println(arr[j]);
+		            break;
+		        }
+		        if(arr[j] != arr[j+k-1]){
+		            System.out.println(arr[j]);
+		            break;
+		        }
+		    }
+		}
+	}
+}
