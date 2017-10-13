@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int[] share = new int[m];
+        int total = 0;
+        for(int a0 = 0; a0 < n; a0++){
+            int id_number = in.nextInt();
+            int amount = in.nextInt();
+            total += amount;
+            share[id_number-1] += amount;
+        }
+        int per = total/m;
+        int diff = total - (per*m);
+        if(diff != 0){
+            share[0] -= diff;
+        }
+        for(int i=0; i<m; i++){
+            System.out.println((i+1)+" "+(share[i]-per));
+        }
+        in.close();
+    }
+}
+
