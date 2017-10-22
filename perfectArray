@@ -1,0 +1,30 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
+		for(int i=0; i<t; i++){
+		    int n = Integer.parseInt(sc.nextLine());
+		    String[] line = sc.nextLine().split(" ");
+		    int flag = 1;
+		    for(int j=0, k = n-1; j<n/2; j++, k--){
+		        int a = Integer.parseInt(line[j]);
+		        int b = Integer.parseInt(line[k]);
+		        if(a != b){
+		            flag = 0;
+		            break;
+		        }
+		    }
+		    if(flag == 0){
+		        System.out.println("NOT PERFECT");
+		    }
+		    else{
+		        System.out.println("PERFECT");
+		    }
+		}
+	}
+}
